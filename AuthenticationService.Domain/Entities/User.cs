@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace AuthenticationService.Domain.Entities
 {
+    [Table("Users")]
     public class User
     {
         public Guid Id { get; set; }
@@ -20,7 +22,7 @@ namespace AuthenticationService.Domain.Entities
 
         public bool IsEmailVerified { get; set; }
 
-        public bool Status { get; set; }
+        public byte Status { get; set; }
 
         public DateTime CreatedDate { get; set; }
     }
