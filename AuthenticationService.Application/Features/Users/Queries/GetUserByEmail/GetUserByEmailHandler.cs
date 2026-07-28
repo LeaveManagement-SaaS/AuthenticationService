@@ -1,5 +1,6 @@
 ﻿using AuthenticationService.Application.Exceptions;
 using AuthenticationService.Domain.Interfaces;
+using AutoMapper;
 using global::AuthenticationService.Application.DTOs.Users;
 using MediatR;
 using System;
@@ -15,10 +16,11 @@ namespace AuthenticationService.Application.Features.Users.Queries.GetUserByEmai
             : IRequestHandler<GetUserByEmailQuery, UserDto>
         {
             private readonly IUserRepository _userRepository;
-
-            public GetUserByEmailHandler(IUserRepository userRepository)
+            private readonly IMapper _mapper;
+            public GetUserByEmailHandler(IUserRepository userRepository, IMapper mapper)
             {
                 _userRepository = userRepository;
+                _mapper = mapper;
             }
 
             public async Task<UserDto> Handle(
@@ -32,17 +34,7 @@ namespace AuthenticationService.Application.Features.Users.Queries.GetUserByEmai
                     throw new ConflictException($"User with email '{request.Email}' already exists.");
                 }
 
-                return new UserDto
-                {
-                    Id = user.Id,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    Phone = user.Phone,
-                    IsEmailVerified = user.IsEmailVerified,
-                    Status = user.Status,
-                    CreatedDate = user.CreatedDate
-                };
+                return _mapper.Map<UserDto>(user);
             }
         }
     }

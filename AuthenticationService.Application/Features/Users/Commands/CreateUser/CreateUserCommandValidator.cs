@@ -22,9 +22,8 @@ public class CreateUserCommandValidator
             .WithMessage("Email is required.")
             .EmailAddress();
 
-        RuleFor(x => x.PasswordHash)
+        RuleFor(x => x.Password)
             .NotEmpty()
-            .WithMessage("Password is required.")
             .MinimumLength(8);
 
         RuleFor(x => x.Phone)

@@ -4,6 +4,7 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
 
 namespace AuthenticationService.Application.Features.Users.Queries.GetAllUsers
 {
@@ -11,10 +12,12 @@ namespace AuthenticationService.Application.Features.Users.Queries.GetAllUsers
     : IRequestHandler<GetAllUsersQuery, List<UserDto>>
     {
         private readonly IUserRepository _repository;
+        private readonly IMapper _mapper;   
 
-        public GetAllUsersHandler(IUserRepository repository)
+        public GetAllUsersHandler(IUserRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public async Task<List<UserDto>> Handle(
@@ -23,13 +26,7 @@ namespace AuthenticationService.Application.Features.Users.Queries.GetAllUsers
         {
             var users = await _repository.GetAllAsync();
 
-            return users.Select(x => new UserDto
-            {
-                Id = x.Id,
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                Email = x.Email
-            }).ToList();
+            return _mapper.Map<List<UserDto>>(users);
         }
     }
 }

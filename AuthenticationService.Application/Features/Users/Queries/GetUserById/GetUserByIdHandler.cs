@@ -5,6 +5,7 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoMapper;
 
 namespace AuthenticationService.Application.Features.Users.Queries.GetUserById
 {
@@ -14,10 +15,12 @@ namespace AuthenticationService.Application.Features.Users.Queries.GetUserById
         public class GetUserByIdHandler : IRequestHandler<GetUserByIdQuery, UserDto>
         {
             private readonly IUserRepository _userRepository;
+            private readonly IMapper _mapper;
 
-            public GetUserByIdHandler(IUserRepository userRepository)
+            public GetUserByIdHandler(IUserRepository userRepository, IMapper mapper)
             {
                 _userRepository = userRepository;
+                _mapper = mapper;
             }
 
             public async Task<UserDto> Handle(
@@ -26,24 +29,16 @@ namespace AuthenticationService.Application.Features.Users.Queries.GetUserById
             {
                 var user = await _userRepository.GetByIdAsync(request.Id);
 
+
                 if (user == null)
                 {
-                    throw new NotFoundException($"User with Id '{request.Id}' was not found.");
+                    throw new NotFoundException(
+                        $"User with Id '{request.Id}' was not found.");
                 }
 
-                return new UserDto
-                {
-                    Id = user.Id,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Email = user.Email,
-                    Phone = user.Phone,
-                    IsEmailVerified = user.IsEmailVerified,
-                    Status = user.Status,
-                    CreatedDate = user.CreatedDate
-                };
 
-               
+                return _mapper.Map<UserDto>(user);
+
             }
         }
     }
