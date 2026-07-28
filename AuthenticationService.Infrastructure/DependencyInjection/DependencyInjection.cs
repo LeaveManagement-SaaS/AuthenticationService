@@ -1,12 +1,14 @@
-﻿using AuthenticationService.Infrastructure.Persistence.Context;
+﻿//using AuthenticationService.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using AuthenticationService.Infrastructure.Repositories.UserRepository;
+//using AuthenticationService.Infrastructure.Repositories.UserRepository;
 using AuthenticationService.Domain.Interfaces;
+using AuthenticationService.Infrastructure.Persistence;
+using AuthenticationService.Infrastructure.Repositories;
 
 namespace AuthenticationService.Infrastructure.DependencyInjection
 {

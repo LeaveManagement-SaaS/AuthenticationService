@@ -1,13 +1,13 @@
 ﻿using AuthenticationService.Domain.Entities;
-//using AuthenticationService.Infrastructure.Persistence;
-using AuthenticationService.Infrastructure.Persistence.Context;
-using Microsoft.EntityFrameworkCore;
 using AuthenticationService.Domain.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using AuthenticationService.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
-
-namespace AuthenticationService.Infrastructure.Repositories.UserRepository;
-
-
+namespace AuthenticationService.Infrastructure.Repositories
+{
     public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _context;
@@ -16,6 +16,7 @@ namespace AuthenticationService.Infrastructure.Repositories.UserRepository;
         {
             _context = context;
         }
+
 
         /// <summary>
         /// Get user by Id
@@ -77,5 +78,4 @@ namespace AuthenticationService.Infrastructure.Repositories.UserRepository;
             }
         }
     }
-
-
+}

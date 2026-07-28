@@ -1,13 +1,11 @@
 ﻿using AuthenticationService.Domain.Entities;
-using AuthenticationService.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
-using System.Reflection.Emit;
 using System.Text;
 
-namespace AuthenticationService.Infrastructure.Persistence.Configurations
+namespace AuthenticationService.Infrastructure.Persistence
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {

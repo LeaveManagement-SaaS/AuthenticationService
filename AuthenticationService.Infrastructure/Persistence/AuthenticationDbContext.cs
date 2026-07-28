@@ -1,10 +1,12 @@
-﻿using System;
+﻿using AuthenticationService.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using AuthenticationService.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 
-namespace AuthenticationService.Infrastructure.Persistence.Context
+
+
+namespace AuthenticationService.Infrastructure.Persistence
 {
     public class ApplicationDbContext : DbContext
     {

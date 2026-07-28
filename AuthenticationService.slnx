@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="AuthenticationService.Application/AuthenticationService.Application.csproj" Id="0137b513-85ee-478c-b53b-a5953e4206e1" />
   <Project Path="AuthenticationService.CrossCutting/AuthenticationService.CrossCutting.csproj" Id="2c7670fe-c6d0-42f0-87bc-fb092e5ab48c" />
   <Project Path="AuthenticationService.Domain/AuthenticationService.Domain.csproj" Id="c9053f1f-2ec0-43d2-b9be-9984c09d3e3f" />
   <Project Path="AuthenticationService.Infrastructure/AuthenticationService.Infrastructure.csproj" Id="8863a506-ed49-44f2-a171-34f422618d13" />
