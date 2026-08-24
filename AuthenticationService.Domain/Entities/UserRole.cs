@@ -1,0 +1,17 @@
+﻿using AuthenticationService.Domain.Entities;
+
+public class UserRole
+{
+    public Guid UserId { get; set; }
+
+    public Guid RoleId { get; set; }
+
+    public DateTime AssignedDate { get; set; }
+
+    public User User { get; set; } = null!;
+
+    public Role Role { get; set; } = null!;
+
+    public ICollection<UserRole> UserRoles { get; set; }
+    = new List<UserRole>();
+}
